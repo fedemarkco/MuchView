@@ -3,14 +3,6 @@ import json
 import os
 
 
-def loadJson():
-  if os.path.isfile('./videos2.json'):
-    f = open('videos2.json')
-    data = json.load(f)
-    f.close()
-    return data
-  return ''
-
 def getFilesharingByLanguageApi(id, cap, language):
   if os.path.isfile('./data.json'):
     f = open('data.json')
