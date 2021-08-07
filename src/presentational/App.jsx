@@ -9,7 +9,7 @@ import SerieDorama from '../components/SerieDorama';
 import SerieHollywood from '../components/SerieHollywood';
 import {
   BrowserRouter as Router,
-  Switch,
+  HashRouter,
   Route
 } from "react-router-dom";
 
@@ -25,11 +25,11 @@ export default class App extends React.Component {
     return(
       <div>
         <Router>
-          <Switch>
+          <HashRouter>
             <Route path="/Video">
               <Video/>
             </Route>
-            <Route path="/PeliculaHollywood" component={PeliculaHollywood}>
+            <Route path="/PeliculaHollywood">
               <PeliculaHollywood/>
             </Route>
             <Route path="/PeliculaAsiatica">
@@ -50,7 +50,7 @@ export default class App extends React.Component {
             <Route path="/">
               <Main/>
             </Route>
-          </Switch>
+          </HashRouter>
         </Router>
       </div>
     )
