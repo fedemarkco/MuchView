@@ -19,7 +19,7 @@ export default class Header extends React.Component {
         <div className="hbox">
           <div className="logo">
             <a href="/">
-              <img alt="muchview" src="./Image/Otros/logo.png"/>
+              <img alt="muchview" src={require("../images/logo.png").default}/>
             </a>
           </div>
           <div className="head-main-nav">
