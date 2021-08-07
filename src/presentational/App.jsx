@@ -29,7 +29,7 @@ export default class App extends React.Component {
             <Route path="/Video">
               <Video/>
             </Route>
-            <Route path="/PeliculaHollywood">
+            <Route path="/PeliculaHollywood" component={PeliculaHollywood}>
               <PeliculaHollywood/>
             </Route>
             <Route path="/PeliculaAsiatica">
