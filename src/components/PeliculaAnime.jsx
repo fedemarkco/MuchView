@@ -105,7 +105,7 @@ export default class PeliculaAnime extends React.Component {
             {this.state.lista.map((x, i) => 
               <div key={i} className="portada-box">
                 <h2 className="portada-title">
-                  <a title={x.Titulo} href={"http://"+this.ipPc+":3000/Video?id="+x.Id+"&cap=1"} rel="bookmark">
+                  <a title={x.Titulo} href={"/Video?id="+x.Id+"&cap=1"} rel="bookmark">
                     {x.Titulo} 
                     {x.Idioma.map((idi, u) => {
                       return (
@@ -116,7 +116,7 @@ export default class PeliculaAnime extends React.Component {
                     })}
                     </a>
                 </h2>
-                <a title={x.Titulo} href={"http://"+this.ipPc+":3000/Video?id="+x.Id+"&cap=1"} rel="nofollow">
+                <a title={x.Titulo} href={"/Video?id="+x.Id+"&cap=1"} rel="nofollow">
                   <img className="img" src={`${process.env.PUBLIC_URL}/`+x.Imagen} alt={x.Titulo}/>
                 </a>
               </div>
