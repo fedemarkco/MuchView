@@ -117,7 +117,7 @@ export default class PeliculaAsiatica extends React.Component {
                     </a>
                 </h2>
                 <a title={x.Titulo} href={"http://"+this.ipPc+":3000/Video?id="+x.Id+"&cap=1"} rel="nofollow">
-                  <img className="img" src={`${process.env.PUBLIC_URL}`+x.Imagen} alt={x.Titulo}/>
+                  <img className="img" src={`${process.env.PUBLIC_URL}/`+x.Imagen} alt={x.Titulo}/>
                 </a>
               </div>
             )}
