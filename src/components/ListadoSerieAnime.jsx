@@ -38,18 +38,18 @@ export default class ListadoSerieAnime extends React.Component {
           <div className="content-box">
             <div className="home-title dark-blue">
               <h3><i className="latest-icon"></i>{title}</h3>
-              <h3 className="ver-todo"><a href={"#/SerieAnime"+this.search}>Ver Todo</a></h3>
+              <h3 className="ver-todo"><a href={"/SerieAnime"+this.search}>Ver Todo</a></h3>
             </div>
             {this.state.lista.map((x, i) => 
               <div key={i} className="portada-box">
                 <h2 className="portada-title">
-                  <a title={x.Titulo} href={"#/Video?id="+x.Id+"&cap=1"} rel="bookmark">
+                  <a title={x.Titulo} href={"/Video?id="+x.Id+"&cap=1"} rel="bookmark">
                     {x.Titulo} 
                     {(x.Idioma.indexOf('Latino') !== -1 ? <img title="Latino" alt="serie anime" src={require("../images/Latino.png").default}/> : '')} 
                     {(x.Idioma.indexOf('Subtitulado') !== -1 ? <img title="Subtitulado" alt="serie anime" className="sub" src={require("../images/Subtitulado.png").default}/> : '')} 
                     </a>
                 </h2>
-                <a title={x.Titulo} href={"#/Video?id="+x.Id+"&cap=1"} rel="nofollow">
+                <a title={x.Titulo} href={"/Video?id="+x.Id+"&cap=1"} rel="nofollow">
                   <img className="img" src={`${process.env.PUBLIC_URL}/`+x.Imagen} alt={x.Titulo}/>
                 </a>
               </div>

@@ -38,12 +38,12 @@ export default class ListadoPeliculaAsiatica extends React.Component {
           <div className="content-box">
             <div className="home-title dark-blue">
               <h3><i className="latest-icon"></i>{title}</h3>
-              <h3 className="ver-todo"><a href={"#/PeliculaAsiatica"+this.search}>Ver Todo</a></h3>
+              <h3 className="ver-todo"><a href={"/PeliculaAsiatica"+this.search}>Ver Todo</a></h3>
             </div>
             {this.state.lista.map((x, i) => 
               <div key={i} className="portada-box">
                 <h2 className="portada-title">
-                  <a title={x.Titulo} href={"#/Video?id="+x.Id+"&cap=1"} rel="bookmark">
+                  <a title={x.Titulo} href={"/Video?id="+x.Id+"&cap=1"} rel="bookmark">
                     {x.Titulo} 
                     {x.Idioma.map((idi, u) => {
                       return (
@@ -54,7 +54,7 @@ export default class ListadoPeliculaAsiatica extends React.Component {
                     })}
                     </a>
                 </h2>
-                <a title={x.Titulo} href={"#/Video?id="+x.Id+"&cap=1"} rel="nofollow">
+                <a title={x.Titulo} href={"/Video?id="+x.Id+"&cap=1"} rel="nofollow">
                   <img className="img" src={`${process.env.PUBLIC_URL}/`+x.Imagen} alt={x.Titulo}/>
                 </a>
               </div>

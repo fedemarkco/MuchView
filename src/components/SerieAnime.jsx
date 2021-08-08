@@ -135,7 +135,7 @@ export default class SerieAnime extends React.Component {
             {this.state.lista.map((x, i) => 
               <div key={i} className="portada-box">
                 <h2 className="portada-title">
-                  <a title={x.Titulo} href={"#/Video?id="+x.Id+"&cap=1"} rel="bookmark">
+                  <a title={x.Titulo} href={"/Video?id="+x.Id+"&cap=1"} rel="bookmark">
                     {x.Titulo} 
                     {x.Idioma.map((idi, u) => {
                       return (
@@ -146,14 +146,14 @@ export default class SerieAnime extends React.Component {
                     })}
                     </a>
                 </h2>
-                <a title={x.Titulo} href={"#/Video?id="+x.Id+"&cap=1"} rel="nofollow">
+                <a title={x.Titulo} href={"/Video?id="+x.Id+"&cap=1"} rel="nofollow">
                   <img className="img" src={`${process.env.PUBLIC_URL}/`+x.Imagen} alt={x.Titulo}/>
                 </a>
               </div>
             )}
             <div className="navigation">
-              {this.pag == 0 ? '' : <a className="text nav-prev" href={`${process.env.PUBLIC_URL}`+'#/'+this.params+(parseInt(this.pag)-1)+this.search+this.gen+this.tipo+this.idioma}>&laquo; Resultados Anteriores</a>}
-              {this.state.lista.length == 18 ? <a className="text nav-prev" href={`${process.env.PUBLIC_URL}`+'#/'+this.params+(parseInt(this.pag)+1)+this.search+this.gen+this.tipo+this.idioma}>Resultados Siguientes &raquo;</a> : ''}
+              {this.pag == 0 ? '' : <a className="text nav-prev" href={this.params+(parseInt(this.pag)-1)+this.search+this.gen+this.tipo+this.idioma}>&laquo; Resultados Anteriores</a>}
+              {this.state.lista.length == 18 ? <a className="text nav-prev" href={this.params+(parseInt(this.pag)+1)+this.search+this.gen+this.tipo+this.idioma}>Resultados Siguientes &raquo;</a> : ''}
             </div>
           </div>
         </div>

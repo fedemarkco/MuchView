@@ -108,7 +108,7 @@ export default class PeliculaAnime extends React.Component {
                 <div className="language-list" style={{"display": "none"}}>
                   <ul>
                     {this.state.listadoIdioma.map((x, i) => 
-                      <li key={i}><a href={'#/'+this.params+'0&idioma='+x} title={x}>{x}</a></li>
+                      <li key={i}><a href={this.params+'0&idioma='+x} title={x}>{x}</a></li>
                     )}
                   </ul>
                 </div>
@@ -116,7 +116,7 @@ export default class PeliculaAnime extends React.Component {
             {this.state.lista.map((x, i) => 
               <div key={i} className="portada-box">
                 <h2 className="portada-title">
-                  <a title={x.Titulo} href={"#/Video?id="+x.Id+"&cap=1"} rel="bookmark">
+                  <a title={x.Titulo} href={"/Video?id="+x.Id+"&cap=1"} rel="bookmark">
                     {x.Titulo} 
                     {x.Idioma.map((idi, u) => {
                       return (
