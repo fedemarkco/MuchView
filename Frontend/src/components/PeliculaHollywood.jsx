@@ -3,7 +3,7 @@ import Header from "./Header"
 import Footer from "./Footer"
 import axios from 'axios';
 
-export default class PeliculaAnime extends React.Component {
+export default class PeliculaHollywood extends React.Component {
   constructor(props){
     super(props);
     this.state = {
