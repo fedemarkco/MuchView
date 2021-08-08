@@ -18,7 +18,7 @@ export default class Header extends React.Component {
       <header id="header" className="main" style={{opacity: 1}}>
         <div className="hbox">
           <div className="logo">
-            <a href={process.env.PUBLIC_URL}>
+            <a href="/">
               <img alt="muchview" src={require("../images/logo.png").default}/>
             </a>
           </div>
