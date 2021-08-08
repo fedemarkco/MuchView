@@ -146,7 +146,7 @@ export default class Video extends React.Component {
     )
   }
   returnListaEpisodios(id, cap){
-    axios.get('https://muchviewapi.herokuapp.com/getEpisodesApi/'+this.searchParams.get('id'))
+    axios.get('https://muchviewapi.herokuapp.com/getEpisodesApi/'+this.getQueryVariable('id'))
     .then(res => {
       this.lista1 = [];
       this.lista2 = [];
@@ -307,8 +307,8 @@ export default class Video extends React.Component {
     idioma = this.putLanguage();
     if(this.state.tipo != 'Pelicula'){
       if(this.state.totalCapitulos >= 1){
-        capitulos = this.returnDivCap(this.searchParams.get('id'), this.searchParams.get('cap'));
-        mostrarEpisodios = this.returnListaEpisodios(this.searchParams.get('id'), this.state.totalCapitulos);
+        capitulos = this.returnDivCap(this.getQueryVariable('id'), this.getQueryVariable('cap'));
+        mostrarEpisodios = this.returnListaEpisodios(this.getQueryVariable('id'), this.state.totalCapitulos);
       }
     }
     return(
