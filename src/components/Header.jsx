@@ -18,7 +18,7 @@ export default class Header extends React.Component {
       <header id="header" className="main" style={{opacity: 1}}>
         <div className="hbox">
           <div className="logo">
-            <a href="/">
+            <a href={process.env.PUBLIC_URL}>
               <img alt="muchview" src={require("../images/logo.png").default}/>
             </a>
           </div>
@@ -29,13 +29,13 @@ export default class Header extends React.Component {
                   <a href="#" onClick={this.onClick}>Peliculas</a>
                   <ul className="sub-menu">
                     <li id="menu-item-17286" className="menu-item menu-item-type-taxonomy menu-item-object-dtquality current-episodes-ancestor current-menu-parent current-episodes-parent menu-item-17286">
-                      <a href="PeliculaHollywood">Hollywood</a>
+                      <a href={`${process.env.PUBLIC_URL}`+'#/PeliculaHollywood'}>Hollywood</a>
                     </li>
                     <li id="menu-item-28045" className="menu-item menu-item-type-taxonomy menu-item-object-dtquality menu-item-28045">
-                      <a href="PeliculaAsiatica">Asiáticas</a>
+                      <a href={`${process.env.PUBLIC_URL}`+'#/PeliculaAsiatica'}>Asiáticas</a>
                     </li>
                     <li id="menu-item-28045" className="menu-item menu-item-type-taxonomy menu-item-object-dtquality menu-item-28045">
-                      <a href="PeliculaAnime">Anime</a>
+                      <a href={`${process.env.PUBLIC_URL}`+'#/PeliculaAnime'}>Anime</a>
                     </li>
                   </ul>
                 </li>
@@ -43,13 +43,13 @@ export default class Header extends React.Component {
                   <a href="#" onClick={this.onClick}>Series</a>
                   <ul className="sub-menu">
                     <li id="menu-item-17286" className="menu-item menu-item-type-taxonomy menu-item-object-dtquality current-episodes-ancestor current-menu-parent current-episodes-parent menu-item-17286">
-                      <a href="SerieHollywood">Hollywood</a>
+                      <a href={`${process.env.PUBLIC_URL}`+'#/SerieHollywood'}>Hollywood</a>
                     </li>
                     <li id="menu-item-17286" className="menu-item menu-item-type-taxonomy menu-item-object-dtquality current-episodes-ancestor current-menu-parent current-episodes-parent menu-item-17286">
-                      <a href="SerieAnime">Anime</a>
+                      <a href={`${process.env.PUBLIC_URL}`+'#/SerieAnime'}>Anime</a>
                     </li>
                     <li id="menu-item-28045" className="menu-item menu-item-type-taxonomy menu-item-object-dtquality menu-item-28045">
-                      <a href="SerieDorama">Dorama</a>
+                      <a href={`${process.env.PUBLIC_URL}`+'#/SerieDorama'}>Dorama</a>
                     </li>
                   </ul>
                 </li>

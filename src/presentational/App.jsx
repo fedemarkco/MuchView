@@ -7,11 +7,15 @@ import PeliculaAnime from '../components/PeliculaAnime'
 import SerieAnime from '../components/SerieAnime';
 import SerieDorama from '../components/SerieDorama';
 import SerieHollywood from '../components/SerieHollywood';
+import createHistory from 'history/createBrowserHistory'
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
+
+const history = createHistory();
+history.go(-1)
 
 export default class App extends React.Component {
   constructor(props) {

@@ -38,7 +38,7 @@ export default class ListadoPeliculaHollywood extends React.Component {
           <div className="content-box">
             <div className="home-title dark-blue">
               <h3><i className="latest-icon"></i>{title}</h3>
-              <h3 className="ver-todo"><a href={"PeliculaHollywood"+this.search}>Ver Todo</a></h3>
+              <h3 className="ver-todo"><a href={"#/PeliculaHollywood"+this.search}>Ver Todo</a></h3>
             </div>
             {this.state.lista.map((x, i) => 
               <div key={i} className="portada-box">

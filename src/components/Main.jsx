@@ -15,7 +15,6 @@ export default class Main extends React.Component {
   }
   
   render(){
-    console.log(this.search);
     return(
       <div id="dt_contenedor">
         <Header/>

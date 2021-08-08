@@ -49,7 +49,7 @@
             $.each(response, function(i, url) {
               if(i.toLowerCase() == 'servidor1') color = 242;
               if(i.toLowerCase() == 'servidor2') color = 284;
-              $('.menuPlayer').append('<li class="option" style="background-color: hsl('+color+', 43%, 55%);" title="Ver en '+i+'" data-player="'+i+'" onclick="javascript:location.href=\'player.html?url='+url+'\'"><div class="iconBig"><div><img src="./Image/Otros/'+i.toLowerCase()+'.png"></div></div></li>');
+              $('.menuPlayer').append('<li class="option" style="background-color: hsl('+color+', 43%, 55%);" title="Ver en '+i+'" data-player="'+i+'" onclick="javascript:location.href=\'player.html?url='+url+'\'"><div class="iconBig"><div><img src="Image/Otros/'+i+'.png"></div></div></li>');
             });
           }
         });

@@ -12,45 +12,56 @@ export default class PeliculaAsiatica extends React.Component {
       listadoIdioma: [],
       idioma: []
     }
-    this.searchParams = new URLSearchParams(window.location.search);
-    if(this.searchParams.get('pag')){
-      this.pag = this.searchParams.get('pag');
+    if(this.getQueryVariable('pag')){
+      this.pag = this.getQueryVariable('pag');
     }else{
       this.pag = 0;
     }
     this.params = 'PeliculaAsiatica?pag=';
     this.gen = '';
-    if(this.searchParams.get('gen')){
-      this.gen = '&gen='+this.searchParams.get('gen');
+    if(this.getQueryVariable('gen')){
+      this.gen = '&gen='+this.getQueryVariable('gen');
     }
     this.idioma = '';
-    if(this.searchParams.get('idioma')){
-      this.idioma = '&idioma='+this.searchParams.get('idioma');
+    if(this.getQueryVariable('idioma')){
+      this.idioma = '&idioma='+this.getQueryVariable('idioma');
     }
     this.search = '';
-    if(this.searchParams.get('s')){
-      this.search = '&s='+this.searchParams.get('s');
+    if(this.getQueryVariable('s')){
+      this.search = '&s='+this.getQueryVariable('s');
     }
+  }
+  getQueryVariable(variable){
+    var u = window.location.href;    
+    var query = u.substring(u.indexOf('?')+1)
+    var vars = query.split("&");
+    for (var i=0;i<vars.length;i++) {
+      var pair = vars[i].split("=");
+      if(pair[0] == variable){
+        return pair[1];
+      }
+    }
+    return(false);
   }
   getList(tipo, clase, start, end){
     this.ipPc = window.location.hostname;
-    if(this.searchParams.get('s')){
-      axios.get('https://muchviewapi.herokuapp.com/search/'+this.searchParams.get('s')+'/'+tipo+'/'+clase+'/'+start+'/'+end)
+    if(this.getQueryVariable('s')){
+      axios.get('https://muchviewapi.herokuapp.com/search/'+this.getQueryVariable('s')+'/'+tipo+'/'+clase+'/'+start+'/'+end)
       .then(res => { 
         if(res.data.length == 0){
-          document.getElementsByClassName('navigation')[0].innerHTML = '<div>No hay resultados para '+this.searchParams.get('s')+'</span></div>';
+          document.getElementsByClassName('navigation')[0].innerHTML = '<div>No hay resultados para '+this.getQueryVariable('s')+'</span></div>';
         }
         this.setState({lista: res.data});
       });  
     }else{
-      if(this.searchParams.get('gen')){
-        axios.get('https://muchviewapi.herokuapp.com/getVideoByTypeClassGenreApi/'+tipo+'/'+clase+'/'+this.searchParams.get('gen')+'/'+start+'/'+end)
+      if(this.getQueryVariable('gen')){
+        axios.get('https://muchviewapi.herokuapp.com/getVideoByTypeClassGenreApi/'+tipo+'/'+clase+'/'+this.getQueryVariable('gen')+'/'+start+'/'+end)
         .then(res => { 
           this.setState({lista: res.data});
         });
       }else{
-        if(this.searchParams.get('idioma')){
-          axios.get('https://muchviewapi.herokuapp.com/getVideoByTypeClassLanguageApi/'+tipo+'/'+clase+'/'+this.searchParams.get('idioma')+'/'+start+'/'+end)
+        if(this.getQueryVariable('idioma')){
+          axios.get('https://muchviewapi.herokuapp.com/getVideoByTypeClassLanguageApi/'+tipo+'/'+clase+'/'+this.getQueryVariable('idioma')+'/'+start+'/'+end)
           .then(res => { 
             this.setState({lista: res.data});
           });
@@ -105,7 +116,7 @@ export default class PeliculaAsiatica extends React.Component {
             {this.state.lista.map((x, i) => 
               <div key={i} className="portada-box">
                 <h2 className="portada-title">
-                  <a title={x.Titulo} href={"/Video?id="+x.Id+"&cap=1"} rel="bookmark">
+                  <a title={x.Titulo} href={"#/Video?id="+x.Id+"&cap=1"} rel="bookmark">
                     {x.Titulo} 
                     {x.Idioma.map((idi, u) => {
                       return (
@@ -116,14 +127,14 @@ export default class PeliculaAsiatica extends React.Component {
                     })}
                     </a>
                 </h2>
-                <a title={x.Titulo} href={"/Video?id="+x.Id+"&cap=1"} rel="nofollow">
+                <a title={x.Titulo} href={"#/Video?id="+x.Id+"&cap=1"} rel="nofollow">
                   <img className="img" src={`${process.env.PUBLIC_URL}/`+x.Imagen} alt={x.Titulo}/>
                 </a>
               </div>
             )}
             <div className="navigation">
-              {this.pag == 0 ? '' : <a className="text nav-prev" href={this.params+(parseInt(this.pag)-1)+this.search+this.gen+this.idioma}>&laquo; Resultados Anteriores</a>}
-              {this.state.lista.length == 18 ? <a className="text nav-prev" href={this.params+(parseInt(this.pag)+1)+this.search+this.gen+this.idioma}>Resultados Siguientes &raquo;</a> : ''}
+              {this.pag == 0 ? '' : <a className="text nav-prev" href={`${process.env.PUBLIC_URL}`+'#/'+this.params+(parseInt(this.pag)-1)+this.search+this.gen+this.idioma}>&laquo; Resultados Anteriores</a>}
+              {this.state.lista.length == 18 ? <a className="text nav-prev" href={`${process.env.PUBLIC_URL}`+'#/'+this.params+(parseInt(this.pag)+1)+this.search+this.gen+this.idioma}>Resultados Siguientes &raquo;</a> : ''}
             </div>
           </div>
         </div>

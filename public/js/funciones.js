@@ -1,5 +1,5 @@
 $(document).ready ( function() {
-
+console.log('listo');
 $("#letrasbg").click(function(event){
     event.stopPropagation();
     $('.letras-int').animate({"left":"-300px"}, 280).hide(280);
@@ -36,9 +36,9 @@ $("span#menu").click(function(event){
  });
  
  $("#slider3").tinycarousel({
-        axis   : "y",
+    axis   : "y",
     infinite : false
-    });
+  });
  
  $('.topten-ul li').hover( function() { 
    $(this).find('.medium-play').slideToggle("fast");

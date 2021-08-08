@@ -21,8 +21,7 @@ export default class Video extends React.Component {
       capituloExiste: 0
     }
     this.getInfo = this.getInfo.bind(this);
-    this.searchParams = new URLSearchParams(window.location.search);
-    axios.get('https://muchviewapi.herokuapp.com/capExists/'+this.searchParams.get('id')+'/'+this.searchParams.get('cap'))
+    axios.get('https://muchviewapi.herokuapp.com/capExists/'+this.getQueryVariable('id')+'/'+this.getQueryVariable('cap'))
     .then(res => {
       if(res.data){
         this.setState({capituloExiste: 1});
@@ -31,21 +30,33 @@ export default class Video extends React.Component {
       }
     });
   }
+  getQueryVariable(variable){
+    var u = window.location.href;    
+    var query = u.substring(u.indexOf('?')+1)
+    var vars = query.split("&");
+    for (var i=0;i<vars.length;i++) {
+      var pair = vars[i].split("=");
+      if(pair[0] == variable){
+        return pair[1];
+      }
+    }
+    return(false);
+  }
   updateIframe(){
     if(this.state.capituloExiste == 1){
       let iidio = this.state.idiomaSeleccionado;
       this.setState({opt: iidio});
-      this.setState({iframe: "opciones.html?id="+this.searchParams.get('id')+"&cap="+
-                    this.searchParams.get('cap')+"&idioma="+iidio+"&status=ok"});
+      this.setState({iframe: `${process.env.PUBLIC_URL}/`+"opciones.html?id="+this.getQueryVariable('id')+"&cap="+
+                    this.getQueryVariable('cap')+"&idioma="+iidio+"&status=ok"});
     }
   }
   getInfo(){
     const ipPc = window.location.hostname;
-    axios.get('https://muchviewapi.herokuapp.com/getGeneroByIdApi/'+this.searchParams.get('id'))
+    axios.get('https://muchviewapi.herokuapp.com/getGeneroByIdApi/'+this.getQueryVariable('id'))
     .then(res => {
       this.setState({listadoGenero: res.data});
     });
-    axios.get('https://muchviewapi.herokuapp.com/getInfo/'+this.searchParams.get('id'))
+    axios.get('https://muchviewapi.herokuapp.com/getInfo/'+this.getQueryVariable('id'))
     .then(res => {
       const info = res.data;
       this.setState({tipo: info.Tipo})
@@ -79,15 +90,15 @@ export default class Video extends React.Component {
     if(this.state.capituloExiste == 1){
       if(this.state.iframe == '' && this.state.idioma.length != 0){
         let iidio = this.state.idiomaSeleccionado;
-        this.setState({iframe: "opciones.html?id="+this.searchParams.get('id')+"&cap="+
-                      this.searchParams.get('cap')+"&idioma="+iidio+"&status=ok"});
+        this.setState({iframe: "opciones.html?id="+this.getQueryVariable('id')+"&cap="+
+                      this.getQueryVariable('cap')+"&idioma="+iidio+"&status=ok"});
         this.updateIframe();
       }
     }
   }
   irAlCapitulo = (e) => {
     e.preventDefault();
-    const id = this.searchParams.get('id');
+    const id = this.getQueryVariable('id');
     const re = /\d+/;
     const cap = re.exec(e.currentTarget.textContent)[0]
     window.location.href = window.location.origin+"/Video?id="+id+"&cap="+cap
@@ -328,7 +339,7 @@ export default class Video extends React.Component {
             </div>
             <div className="sheader">
               <div className="poster">
-                <img ref="image" alt="video" onLoad={() => this.updateSize()} src={info.Imagen}/>
+                <img ref="image" alt="video" onLoad={() => this.updateSize()} src={`${process.env.PUBLIC_URL}/`+info.Imagen}/>
               </div>
               <div className="data" style={{'position': 'absolute'}}>
                 <h1>{info.Titulo}</h1>
