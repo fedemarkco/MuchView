@@ -1,5 +1,5 @@
 # MuchView
-Página de Películas y Series (React + API con Flask + Json)
+Página web de Películas y Series (React + API con Flask + Json)
 
 ## Detalles
 Para este proyecto se utilizaron:<br>
