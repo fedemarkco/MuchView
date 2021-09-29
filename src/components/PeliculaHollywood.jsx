@@ -101,7 +101,7 @@ export default class PeliculaAnime extends React.Component {
                 <div className="genre-list" style={{"display": "none"}}>
                   <ul>
                     {this.state.listadoGenero.map((x, i) => 
-                      <li key={i}><a href={'#/'+this.params+'0&gen='+x.replace('&', '%26')} title={x}>{x}</a></li>
+                      <li key={i}><a href={this.params+'0&gen='+x.replace('&', '%26')} title={x}>{x}</a></li>
                     )}
                   </ul>
                 </div>
